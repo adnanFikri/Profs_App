@@ -1,0 +1,15 @@
+1- create repo in gitHub and colne it 
+   - install new project laravel
+   - connect to new database namde 'prof_app'
+   - publich link storage with command : ->php artisan storage:link
+
+2-  add authentification command and 
+	table 'user' form migrations with attributes : 
+         		name, role(default-> "etud"), email, password
+   -  auth commands : 
+         -> composer require laravel/ui
+         -> php artisan ui bootstrap
+         -> npm install && npm run dev
+         -> php artisan ui bootstrap --auth
+         -> npm install && npm run dev
+   - add fonctionnality of Admin : First user authentificate will be Admin
