@@ -1,5 +1,6 @@
 <?php
 
+// use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// web.php
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/professeur', [App\Http\Controllers\ProfesseurController::class, 'index'])->name('professeur.index');;
-Route::get('/professeur/create', [App\Http\Controllers\ProfesseurController::class, 'create'])->name('professeur.create');;
-Route::get('/emploi', [App\Http\Controllers\EmploiController::class, 'index'])->name('emploi.index');;
+
+
+Route::middleware(['checkRole:admin'])->group(function () {
+    Route::get('/professeur', [App\Http\Controllers\ProfesseurController::class, 'index'])->name('professeur.index');
+    Route::get('/professeur/create', [App\Http\Controllers\ProfesseurController::class, 'create'])->name('professeur.create');
+    Route::post('/professeur/store', [App\Http\Controllers\ProfesseurController::class, 'store'])->name('professeur.store');
+});
+
+Route::middleware(['checkRole:admin,prof'])->group(function () {
+    Route::get('/emploi', [App\Http\Controllers\EmploiController::class, 'index'])->name('emploi.index');
+});
