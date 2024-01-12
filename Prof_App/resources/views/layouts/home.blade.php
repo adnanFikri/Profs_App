@@ -95,6 +95,8 @@
                 </div>
                 <!-- end sidebar toggle -->
 
+            @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof'))
+
                 <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">homes</p>
 
                 <!-- link -->
@@ -106,30 +108,41 @@
                 <!-- end link -->
                 <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Professeur</p>
 
-                <!-- link -->
-                <a href="{{ route('professeur.create') }}"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-shield-check text-xs mr-2"></i>
-                    Ajouter Professeur
-                </a>
-                <!-- end link -->
-                <!-- link -->
-                <a href="{{ route('professeur.index') }}"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-users"></i>
-                    Liste Professeur
-                </a>
-                <!-- end link -->
+                @if(auth()->user() && auth()->user()->role === 'admin')
+                    <!-- link -->
+                    <a href="{{ route('professeur.create') }}"
+                        class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                        <i class="fad fa-shield-check text-xs mr-2"></i>
+                        Ajouter Professeur
+                    </a>
+                    <!-- end link -->
+                    <!-- link -->
+                    <a href="{{ route('professeur.index') }}"
+                        class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                        <i class="fad fa-users"></i>
+                        Liste Professeur
+                    </a>
+                    <!-- end link -->
+                @endif
                 <!-- link -->
                 <a href="{{ route('emploi.index') }}"
                     class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
                     <i class="fad fa-calendar-edit text-xs mr-2"></i>
                     Emploi
                 </a>
+            {{-- @endif --}}
                 <!-- end link -->
 
                 <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Inscription</p>
 
+                <!-- link -->
+                <a href="#"
+                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                <i class="fad fa-users"></i>
+                Liste etudiants
+                </a>
+                <!-- end link -->
+            @endif
                 <!-- link -->
                 <a href="#"
                     class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
@@ -138,13 +151,9 @@
                 </a>
                 <!-- end link -->
 
-                <!-- link -->
-                <a href="#"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-users"></i>
-                    Liste etudiants
-                </a>
-                <!-- end link -->
+            {{-- @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')) --}}
+
+
             </div>
             <!-- end sidebar content -->
 

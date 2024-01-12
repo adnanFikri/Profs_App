@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Professeur;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class ProfesseurController extends Controller
 {
@@ -25,9 +29,33 @@ class ProfesseurController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $data)
     {
-        //
+        $user = User::create([
+            'name' => $data['name'],
+            'role' => "prof",
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        if ($data->hasFile('profile')) {
+            $newfile = $data->file('profile');
+
+            $nameFile = time() . '.' . $newfile->getClientOriginalExtension();
+            $newfile->storeAs('public/images',$nameFile);
+        }
+
+        Professeur::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'departement' => $data['departement'],
+            'telephone' => $data['telephone'],
+            'adresse' => $data['adresse'],
+            'profile' => $nameFile,
+            'user_id' => $user->id
+        ]);
+
+        return view('dashboard.professeur.liste');
     }
 
     /**
@@ -43,6 +71,7 @@ class ProfesseurController extends Controller
      */
     public function edit(string $id)
     {
+
         //
     }
 

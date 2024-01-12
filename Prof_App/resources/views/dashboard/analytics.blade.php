@@ -111,7 +111,7 @@
                             <!-- bottom -->
                             <div class="mt-8">
                                 <h1 class="h5">30</h1>
-                                <p>Etudiants Admin</p>
+                                <p>Etudiants Admis</p>
                             </div>
                             <!-- end bottom -->
 
