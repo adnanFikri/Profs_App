@@ -24,6 +24,9 @@
                     </svg>
                     <input class="pl-2 outline-none border-none" type="text" name="name" id="name" placeholder="Nom "
                         value="{{ old('name') }}" required autocomplete="name" autofocus />
+                        {{-- roles etud par defaut  --}}
+                    <input class="pl-2 outline-none border-none" type="hidden" name="role"
+                        value="etud" />
                 </div>
                 @error('name')
                 <span role="alert">
