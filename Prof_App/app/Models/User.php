@@ -16,6 +16,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Professeur::class);
     }
+    public function inscription()
+    {
+        return $this->hasOne(Inscription::class, 'user_id');
+    }
 
     /**
      * The attributes that are mass assignable.
