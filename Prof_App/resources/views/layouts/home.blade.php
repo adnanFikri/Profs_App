@@ -144,10 +144,45 @@
                 <!-- end link -->
             @endif
                 <!-- link -->
-                <a href="#"
+                <a href="{{ route('inscription.create') }}"
                     class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
                     <i class="fad fa-check-square text-xs mr-2"></i>
-                    Pre-selection
+                    Inscription
+                </a>
+                <!-- end link -->
+                 <!-- link -->
+                 <a href="{{ route('inscription.index') }}"
+                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                    <i class="fad fa-check-square text-xs mr-2"></i>
+                    Liste inscriptions
+                </a>
+                <!-- end link -->
+                 <!-- link -->
+                 <a href="{{ route('inscription.list_filter') }}"
+                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                    <i class="fad fa-check-square text-xs mr-2"></i>
+                    Liste étudiants
+                </a>
+                <!-- end link -->
+                <!-- link -->
+                <a href="{{ route('inscription.form_filter') }}"
+                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                    <i class="fad fa-check-square text-xs mr-2"></i>
+                    Sélection
+                </a>
+                <!-- end link -->
+                <!-- link -->
+                <a href="{{ route('module.create') }}"
+                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                    <i class="fad fa-check-square text-xs mr-2"></i>
+                    Ajouter modules
+                </a>
+                <!-- end link -->
+                <!-- link -->
+                <a href="{{ route('module.index') }}"
+                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                    <i class="fad fa-check-square text-xs mr-2"></i>
+                    List modules
                 </a>
                 <!-- end link -->
 
