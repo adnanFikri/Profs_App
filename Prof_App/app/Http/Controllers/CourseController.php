@@ -34,7 +34,7 @@ class CourseController extends Controller
     {
 
         $data->validate([
-            'title' => 'required|string|max:255',
+            'titre' => 'required|string|max:255',
             'description' => 'required|string',
             'module_id' => 'required',
             'file' => 'required|mimes:pdf,doc,docx|max:5048',
@@ -51,7 +51,7 @@ class CourseController extends Controller
         Course::create([
             'titre' => $data['titre'],
             'description' => $data['description'],
-            'module_id' => $data['module'],
+            'module_id' => $data['module_id'],
             'professeur_id' => $prof_id,
             'fileName' => $nameFile,
         ]);

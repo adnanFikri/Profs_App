@@ -39,7 +39,7 @@
                     clip-rule="evenodd" />
             </svg>
             {{-- <label for="underline_select" class="sr-only">Departement</label> --}}
-            <select id="underline_select" name="module" class="block pl-1  px-0 w-full te text-gray-900 bg-transparent border-0 border-gray-200 appearance-none dark:text-dark-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
+            <select id="underline_select" name="module_id" class="block pl-1  px-0 w-full te text-gray-900 bg-transparent border-0 border-gray-200 appearance-none dark:text-dark-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
                 <option hidden class="text-gray-500">Module</option>
                 @foreach ($modules as $module)
                     <option value="{{ $module->id }}">{{ $module->name }}</option>
