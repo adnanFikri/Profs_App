@@ -72,7 +72,7 @@ class RegisterController extends Controller
         ]);
 
         if(User::count() === 1){
-            $user->Admin = true;
+            $user->role = 'admin';
             $user->save();
         };
 

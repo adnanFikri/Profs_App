@@ -15,7 +15,8 @@ class ProfesseurController extends Controller
      */
     public function index()
     {
-        return view('dashboard.professeur.liste');
+        $profs = Professeur::all();
+        return view('dashboard.professeur.liste', compact('profs'));
     }
 
     /**
@@ -43,19 +44,21 @@ class ProfesseurController extends Controller
 
             $nameFile = time() . '.' . $newfile->getClientOriginalExtension();
             $newfile->storeAs('public/images',$nameFile);
+        }else{
+            $nameFile = 'user.jpg';
         }
 
         Professeur::create([
             'name' => $data['name'],
-            'email' => $data['email'],
             'departement' => $data['departement'],
+            'email' => $data['email'],
             'telephone' => $data['telephone'],
             'adresse' => $data['adresse'],
             'profile' => $nameFile,
             'user_id' => $user->id
         ]);
 
-        return view('dashboard.professeur.liste');
+        return redirect()->route('professeur.index')->with('success', 'Professor Added successfully.');
     }
 
     /**
@@ -69,18 +72,38 @@ class ProfesseurController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-
-        //
+        $prof = Professeur::findOrFail($id);
+        return view('dashboard.professeur.edit', compact('prof'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $data, string $id)
     {
-        //
+        $professor = Professeur::findOrFail($id);
+
+        if ($data->hasFile('profile')) {
+            $newfile = $data->file('profile');
+
+            $nameFile = time() . '.' . $newfile->getClientOriginalExtension();
+            $newfile->storeAs('public/images',$nameFile);
+        }else{
+            $nameFile = $professor->profile;
+        }
+
+        $professor->update([
+            'name' => $data['name'],
+            'departement' => $data['departement'],
+            'email' => $data['email'],
+            'telephone' => $data['telephone'],
+            'adresse' => $data['adresse'],
+            'profile' => $nameFile,
+        ]);
+
+        return redirect()->route('professeur.index')->with('success', 'Professor updated successfully.');
     }
 
     /**
@@ -88,6 +111,9 @@ class ProfesseurController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $professor = Professeur::findOrFail($id);
+        $professor->delete();
+
+        return redirect()->route('professeur.index')->with('success', 'Professor deleted successfully.');
     }
 }

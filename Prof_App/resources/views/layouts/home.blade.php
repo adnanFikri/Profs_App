@@ -95,7 +95,7 @@
                 </div>
                 <!-- end sidebar toggle -->
 
-            @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof'))
+            @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof' || auth()->user()->role === 'student')  )
 
                 <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">homes</p>
 
@@ -108,7 +108,7 @@
                 <!-- end link -->
                 <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Professeur</p>
 
-                @if(auth()->user() && auth()->user()->role === 'admin')
+                @if(auth()->user()->role === 'admin')
                     <!-- link -->
                     <a href="{{ route('professeur.create') }}"
                         class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
@@ -130,19 +130,35 @@
                     <i class="fad fa-calendar-edit text-xs mr-2"></i>
                     Emploi
                 </a>
-            {{-- @endif --}}
                 <!-- end link -->
-
-                <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Inscription</p>
 
                 <!-- link -->
-                <a href="#"
-                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                <i class="fad fa-users"></i>
-                Liste etudiants
+                <a href="{{ route('course.index') }}"
+                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                    <i class="fad fa-calendar-edit text-xs mr-2"></i>
+                    Cours
                 </a>
                 <!-- end link -->
-            @endif
+                @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
+                    <!-- link -->
+                    <a href="{{ route('course.create') }}"
+                        class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                        <i class="fad fa-calendar-edit text-xs mr-2"></i>
+                        Ajouter Cours
+                    </a>
+                    <!-- end link -->
+
+                    <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Inscription</p>
+
+                    <!-- link -->
+                    <a href="#"
+                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                    <i class="fad fa-users"></i>
+                    Liste etudiants
+                    </a>
+                    <!-- end link -->
+                @endif
+        @endif
                 <!-- link -->
                 <a href="{{ route('inscription.create') }}"
                     class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">

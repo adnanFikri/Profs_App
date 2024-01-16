@@ -18,4 +18,8 @@ class Professeur extends Model
     {
         return $this->hasMany(Module::class);
     }
+    public function course()
+    {
+        return $this->hasMany(Course::class);
+    }
 }
