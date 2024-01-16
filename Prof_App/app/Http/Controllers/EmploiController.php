@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Emploi;
+use App\Models\Module;
+use App\Models\Professeur;
 class EmploiController extends Controller
 {
     /**
@@ -11,7 +13,8 @@ class EmploiController extends Controller
      */
     public function index()
     {
-        return view('dashboard.emploi.liste');
+        $emplois = Emploi::all();
+        return view('dashboard.emploi.liste',compact('emplois'));
     }
 
     /**
@@ -19,7 +22,9 @@ class EmploiController extends Controller
      */
     public function create()
     {
-        //
+        $modules = Module::all();
+        $professeurs = Professeur::all();
+        return view('dashboard.emploi.create', compact('modules','professeurs'));
     }
 
     /**
@@ -27,7 +32,30 @@ class EmploiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $emplois = Emploi::all();
+        $count = 0;
+        foreach($emplois as $emploi){
+            if($request->input('time')  == $emploi->time && $request->input('jour')  == $emploi->jour){
+                $count = 1;
+            }
+            
+        }
+        if($count == 0) {
+            Emploi::create([
+                'time' => $request->input('time'),
+                'professeur_id' => $request->input('professeur_id'),
+                'module_id' => $request->input('module_id'),
+                'salle' => $request->input('salle'),
+                'jour' => $request->input('jour'),
+            ]);
+            return redirect()->route('emploi.index')->with('success', 'Emploi added successfully.');
+        }else{
+            return redirect()->route('emploi.create')->withErrors(['error' => "Désolé c'est pas vide"]);
+        }
+        
+
+        
     }
 
     /**
@@ -59,6 +87,9 @@ class EmploiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $emploi = Emploi::findOrFail($id);
+        $emploi->delete();
+
+        return redirect()->route('emploi.index')->with('success', 'Emploi deleted successfully.');
     }
 }

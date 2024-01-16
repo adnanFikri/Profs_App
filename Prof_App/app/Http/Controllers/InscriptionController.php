@@ -87,7 +87,7 @@ class InscriptionController extends Controller
 
 
 
-        return redirect()->route('inscription.show', ['id' => $inscription->id]);
+        return redirect()->route('inscription.show', ['id' => $inscription->id])->with('success', 'Informations added successfully.');
     }
     public function edit($id)
     {
@@ -128,7 +128,7 @@ class InscriptionController extends Controller
         $this->updateFile($data, 'diplome_bac_2', $inscription, 'diplome_bac_2');
         $this->updateFile($data, 'releve_bac_2', $inscription, 'releve_bac_2');
 
-        return redirect()->route('inscription.show', ['id' => $inscription->id]);
+        return redirect()->route('inscription.show', ['id' => $inscription->id])->with('success', 'Informations updated successfully.');
     }
 
     private function updateFile(Request $data, $field, $model, $attribute)

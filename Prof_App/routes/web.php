@@ -56,7 +56,9 @@ Route::middleware(['checkRole:admin'])->group(function () {
 Route::middleware(['checkRole:admin,prof'])->group(function () {
     // Emploi
     Route::get('/emploi', [App\Http\Controllers\EmploiController::class, 'index'])->name('emploi.index');
-
+    Route::post('/emploi/store', [App\Http\Controllers\EmploiController::class, 'store'])->name('emploi.store');
+    Route::get('/emploi/create', [App\Http\Controllers\EmploiController::class, 'create'])->name('emploi.create');
+    Route::delete('/emploi/{id}', [App\Http\Controllers\EmploiController::class, 'destroy'])->name('emploi.delete');
     // Course :
     Route::get('/course/create', [App\Http\Controllers\CourseController::class, 'create'])->name('course.create');
     Route::post('/course/store', [App\Http\Controllers\CourseController::class, 'store'])->name('course.store');
