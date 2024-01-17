@@ -34,7 +34,7 @@ class CourseController extends Controller
     {
 
         $data->validate([
-            'title' => 'required|string|max:255',
+            'titre' => 'required|string|max:255',
             'description' => 'required|string',
             'module_id' => 'required',
             'file' => 'required|mimes:pdf,doc,docx|max:5048',
