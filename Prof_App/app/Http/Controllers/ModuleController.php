@@ -24,7 +24,7 @@ class ModuleController extends Controller
             'time' => $data->input('time'),
             'professeur_id' => $data->input('professeur_id'),
         ]);
-        return redirect()->route('module.index')->with('success', 'Module created successfully');
+        return redirect()->route('module.index')->with('success', 'module added successfully.');
     }
     public function destroy($id)
     {

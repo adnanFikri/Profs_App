@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="bg-gray-100 flex-1 p-6  md:mt-16">
+        @if(session('success'))
+            <div class="alert alert-success mb-5">
+                {{ session('success') }}
+            </div>
+        @endif
             <h1 class="h3 mb-5 sm:mt-10 mx-auto text-center">Your Informations</h1>
             <div class="card col-span-2 xl:col-span-1">
                 <div class="flex-1 flex flex-col mt-5">

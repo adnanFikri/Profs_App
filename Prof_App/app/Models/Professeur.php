@@ -22,4 +22,8 @@ class Professeur extends Model
     {
         return $this->hasMany(Course::class);
     }
+    public function emploi()
+    {
+        return $this->hasMany(Emploi::class);
+    }
 }

@@ -51,7 +51,7 @@ class CourseController extends Controller
         Course::create([
             'titre' => $data['titre'],
             'description' => $data['description'],
-            'module_id' => $data['module'],
+            'module_id' => $data['module_id'],
             'professeur_id' => $prof_id,
             'fileName' => $nameFile,
         ]);

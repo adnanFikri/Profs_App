@@ -5,6 +5,11 @@
 <div class="bg-gray-100 flex-1 p-6  md:mt-16">
             <h1 class="h3 mb-5 sm:mt-10">Liste Modules</h1>
             <div class="card col-span-2 xl:col-span-1">
+            @if(session('success'))
+            <div class="alert alert-success mb-5">
+                {{ session('success') }}
+            </div>
+        @endif
 
                 <table class="table-auto w-full text-left">
                     <thead>
