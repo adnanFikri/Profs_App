@@ -3,14 +3,14 @@
     .tbl{
         font-family: 'Times New Roman', Times, serif;
         font-weight: bold;
-        font-size: 18px;
+        /* font-size: 18px; */
     }
 </style>
 
 @section('content')
 <div class="bg-gray-100 flex-1 p-6  md:mt-16">
 
-            <h1 class="h3 mb-5 sm:mt-10">L'emploi</h1>
+            <h1 class="h5 mb-5 sm:mt-10">Emploi du Temps</h1>
             <!-- Start Recent Sales -->
         <div class="card col-span-2 xl:col-span-1">
         @if(session('success'))
@@ -54,7 +54,7 @@
                     <td class="border border-l-0 px-4 py-2 text-center text-black">Lundi</td>
 
                     @foreach([8, 11, 13, 16] as $time)
-                        <td class="border border-l-0  px-4 py-2 text-black text-center">
+                        <td class="border border-l-0  px-4 pt-3 text-black text-center">
                             @foreach($emplois as $emploi)
                                 @if($emploi->jour === "Lundi" && $emploi->time == $time)
                                     <span class="acitvecolor">Prof.{{$emploi->professeur->name}}</span></br>
@@ -78,7 +78,7 @@
                     <td class="border border-l-0 px-4 py-2 text-center text-black">Mardi</td>
 
                     @foreach([8, 11, 13, 16] as $time)
-                        <td class="border border-l-0 px-4 py-2 text-black text-center">
+                        <td class="border border-l-0 px-4 pt-3 text-black text-center">
                             @foreach($emplois as $emploi)
                                 @if($emploi->jour === "Mardi" && $emploi->time == $time)
                                     <span class="acitvecolor">Prof.{{  $emploi->professeur->name }}</span></br>
@@ -102,7 +102,7 @@
                     <td class="border border-l-0 px-4 py-2 text-center text-black">Mercredi</td>
 
                     @foreach([8, 11, 13, 16] as $time)
-                        <td class="border border-l-0 px-4 py-2 text-black text-center">
+                        <td class="border border-l-0 px-4 pt-3 text-black text-center">
                             @foreach($emplois as $emploi)
                                 @if($emploi->jour === "Mercredi" && $emploi->time == $time)
                                     <span class="acitvecolor">Prof.{{$emploi->professeur->name}}</span></br>
@@ -126,7 +126,7 @@
                     <td class="border border-l-0 px-4 py-2 text-center text-black">Jeudi</td>
 
                     @foreach([8, 11, 13, 16] as $time)
-                        <td class="border border-l-0 px-4 py-2 text-black text-center">
+                        <td class="border border-l-0 px-4 pt-3 text-black text-center">
                             @foreach($emplois as $emploi)
                                 @if($emploi->jour === "Jeudi" && $emploi->time == $time)
                                     <span class="acitvecolor">Prof.{{$emploi->professeur->user->id ." - ".$emploi->professeur->name}}</span></br>
@@ -150,7 +150,7 @@
                     <td class="border border-l-0 px-4 py-2 text-center text-black">Vendredi</td>
 
                     @foreach([8, 11, 13, 16] as $time)
-                        <td class="border border-l-0 px-4 py-2 text-black text-center">
+                        <td class="border border-l-0 px-4 pt-3 text-black text-center">
                             @foreach($emplois as $emploi)
                                 @if($emploi->jour === "Vendredi" && $emploi->time == $time)
                                     <span class="acitvecolor">Prof.{{$emploi->professeur->name}}</span></br>
@@ -171,10 +171,10 @@
                     @endforeach
                 </tr>
                 <tr>
-                    <td class="border border-l-0 px-4 py-2 text-center text-black">Samedi</td>
+                    <td class="border border-l-0 px-2 py-1 text-center text-black">Samedi</td>
 
                     @foreach([8, 11, 13, 16] as $time)
-                        <td class="border border-l-0 px-4 py-2 text-black text-center">
+                        <td class="border border-l-0 px- pt-3 text-black text-center">
                             @foreach($emplois as $emploi)
                                 @if($emploi->jour === "Samedi" && $emploi->time == $time)
                                     <span class="acitvecolor">Prof.{{$emploi->professeur->name}}</span></br>
@@ -195,30 +195,23 @@
                     @endforeach
                 </tr>
 
-
-
-              </tbody>
-            </table>
-          </div>
-          <!-- End Recent Sales -->
+            </tbody>
+        </table>
+    </div>
+        <!-- End Recent Sales -->
 
         <script>
-            // Get the span element
             var spanElements = document.querySelectorAll('.acitvecolor');
 
             spanElements.forEach(function(spanElement) {
-
                 var parentElement = spanElement.parentNode;
-
-                // parentElement.style.backgroundColor = '#b6c3ff';
-                parentElement.style.backgroundColor = '#4299e1';
+                parentElement.style.backgroundColor = 'rgb(63 149 221)';
                 parentElement.style.color = 'white';
-                // parentElement.style.border = '2px solid brown';
-                parentElement.style.boxShadow = '1px 1px 10px #c9c2c2';
-                // parentElement.style.boxShadow = '1px 1px 10px   black';
+                parentElement.style.boxShadow = '1px 1px 5px #c9c2c2';
             });
         </script>
 
 
-        </div>
+</div>
+
 @endsection

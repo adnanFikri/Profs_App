@@ -7,6 +7,10 @@
     <link rel="shortcut icon" href="./img/fav.png" type="image/x-icon">
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <!-- libraries to download tables to pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
     <title>Ecole Normal Superieur</title>
 </head>
 
@@ -15,7 +19,7 @@
 
     <!-- start navbar -->
     <div
-        class="md:fixed md:w-full md:top-0 md:z-20 flex flex-row flex-wrap items-center bg-white p-6 border-b border-gray-300">
+        class="md:fixed md:w-full md:top-0 md:z-20 flex flex-row flex-wrap items-center bg-white px-6 py-2 border-b border-gray-300">
         <!-- logo -->
         <div class="flex-none w-56 flex flex-row items-center">
             <img src="{{ asset('img/logo.png') }}" class="w-20 flex-none">
@@ -105,7 +109,7 @@
                     <a href="{{ route('home') }}"
                         class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
                         <i class="fad fa-chart-pie text-xs mr-2"></i>
-                        Analytics dashboard
+                        Accueil
                     </a>
                     <!-- end link -->
                     <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Professeur</p>

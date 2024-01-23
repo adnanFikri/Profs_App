@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Emploi;
 use App\Models\Module;
 use App\Models\Professeur;
-use App\Models\User;
 use App\Models\Inscription;
+use Illuminate\Http\Request;
+
 class HomeController extends Controller
 {
     /**
@@ -30,10 +32,12 @@ class HomeController extends Controller
         $count_module = Module::count();
         $count_inscri = Inscription::count();
         $count_students = User::where('role', 'student')->count();
+
+        $emplois = Emploi::all();
         if (auth()->user()->role == 'etud') {
             return view('dashboard.inscription.add');
         } else {
-            return view('dashboard.analytics', compact('count_prof', 'count_module', 'count_inscri', 'count_students'));
+            return view('dashboard.analytics', compact('count_prof', 'count_module', 'count_inscri', 'count_students', 'emplois'));
         }
     }
 }
