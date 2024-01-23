@@ -32,16 +32,21 @@ class EmploiController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
+        $userId = auth()->id();
+        $prof = Professeur::where('user_id', $userId)->first();
         
-        $emplois = Emploi::all();
-        $count = 0;
-        foreach($emplois as $emploi){
-            if($request->input('time')  == $emploi->time && $request->input('jour')  == $emploi->jour){
-                $count = 1;
-            }
-            
+        $EmploiExists = Emploi::where('time', $request->input('time'))
+        ->where('jour', $request->input('jour'))
+        ->first();
+
+        if ($EmploiExists) {
+            // Data deja exists, redirect with message error
+            return redirect()->route('emploi.create')->withErrors(['error' => "Désolé c'est pas vide"]);
         }
-        if($count == 0) {
+
+        // Data does not exist, create a new emploi
+        if($user->role == 'admin'){
             Emploi::create([
                 'time' => $request->input('time'),
                 'professeur_id' => $request->input('professeur_id'),
@@ -49,13 +54,43 @@ class EmploiController extends Controller
                 'salle' => $request->input('salle'),
                 'jour' => $request->input('jour'),
             ]);
-            return redirect()->route('emploi.index')->with('success', 'Emploi added successfully.');
         }else{
-            return redirect()->route('emploi.create')->withErrors(['error' => "Désolé c'est pas vide"]);
+            Emploi::create([
+                'time' => $request->input('time'),
+                'professeur_id' => $prof->id,
+                'module_id' => $request->input('module_id'),
+                'salle' => $request->input('salle'),
+                'jour' => $request->input('jour'),
+            ]);
         }
-        
 
-        
+        return redirect()->route('emploi.index')->with('success', 'Emploi ajouté avec succès.');
+
+
+        // old methode
+        // $emplois = Emploi::all();
+        // $count = 0;
+        // foreach($emplois as $emploi){
+        //     if($request->input('time')  == $emploi->time && $request->input('jour')  == $emploi->jour){
+        //         $count = 1;
+        //     }
+
+        // }
+        // if($count == 0) {
+        //     Emploi::create([
+        //         'time' => $request->input('time'),
+        //         'professeur_id' => $request->input('professeur_id'),
+        //         'module_id' => $request->input('module_id'),
+        //         'salle' => $request->input('salle'),
+        //         'jour' => $request->input('jour'),
+        //     ]);
+        //     return redirect()->route('emploi.index')->with('success', 'Emploi ajouté avec succès');
+        // }else{
+        //     return redirect()->route('emploi.create')->withErrors(['error' => "Désolé c'est pas vide"]);
+        // }
+
+
+
     }
 
     /**
@@ -90,6 +125,6 @@ class EmploiController extends Controller
         $emploi = Emploi::findOrFail($id);
         $emploi->delete();
 
-        return redirect()->route('emploi.index')->with('success', 'Emploi deleted successfully.');
+        return redirect()->route('emploi.index')->with('success', 'Emploi supprimé avec succès.');
     }
 }

@@ -76,147 +76,155 @@
     <!-- end navbar -->
 
 
+
+{{-- @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof' || auth()->user()->role === 'student')  ) --}}
     <!-- strat wrapper -->
     <div class="h-screen flex flex-row flex-wrap">
+        @if(auth()->user()->role != 'etud' )
+            <!-- start sidebar -->
+                <div id="sideBar"
+                class="relative flex flex-col flex-wrap bg-white border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster">
 
-        <!-- start sidebar -->
-        <div id="sideBar"
-            class="relative flex flex-col flex-wrap bg-white border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster">
 
+                <!-- sidebar content -->
+                <div class="flex flex-col">
 
-            <!-- sidebar content -->
-            <div class="flex flex-col">
+                    <!-- sidebar toggle -->
+                    <div class="text-right hidden md:block mb-4">
+                        <button id="sideBarHideBtn">
+                            <i class="fad fa-times-circle"></i>
+                        </button>
+                    </div>
+                    <!-- end sidebar toggle -->
 
-                <!-- sidebar toggle -->
-                <div class="text-right hidden md:block mb-4">
-                    <button id="sideBarHideBtn">
-                        <i class="fad fa-times-circle"></i>
-                    </button>
-                </div>
-                <!-- end sidebar toggle -->
+                @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof' || auth()->user()->role === 'student')  )
 
-            @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof' || auth()->user()->role === 'student')  )
+                    <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">homes</p>
 
-                <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">homes</p>
-
-                <!-- link -->
-                <a href="{{ route('home') }}"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-chart-pie text-xs mr-2"></i>
-                    Analytics dashboard
-                </a>
-                <!-- end link -->
-                <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Professeur</p>
-
-                @if(auth()->user()->role === 'admin')
                     <!-- link -->
-                    <a href="{{ route('professeur.create') }}"
+                    <a href="{{ route('home') }}"
                         class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                        <i class="fad fa-shield-check text-xs mr-2"></i>
-                        Ajouter Professeur
+                        <i class="fad fa-chart-pie text-xs mr-2"></i>
+                        Analytics dashboard
                     </a>
                     <!-- end link -->
-                    <!-- link -->
-                    <a href="{{ route('professeur.index') }}"
-                        class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                        <i class="fad fa-users"></i>
-                        Liste Professeur
-                    </a>
-                    <!-- end link -->
-                @endif
-                <!-- link -->
-                <a href="{{ route('emploi.index') }}"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-calendar-edit text-xs mr-2"></i>
-                    Emploi
-                </a>
-                <!-- end link -->
-                <!-- link -->
-                <a href="{{ route('emploi.create') }}"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-calendar-edit text-xs mr-2"></i>
-                    Ajouter Emploi
-                </a>
-                <!-- end link -->
+                    <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Professeur</p>
 
-                <!-- link -->
-                <a href="{{ route('course.index') }}"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-calendar-edit text-xs mr-2"></i>
-                    Cours
-                </a>
-                <!-- end link -->
-                @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
+                    @if(auth()->user()->role === 'admin')
+                        <!-- link -->
+                        <a href="{{ route('professeur.create') }}"
+                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                            <i class="fad fa-shield-check text-xs mr-2"></i>
+                            Ajouter Professeur
+                        </a>
+                        <!-- end link -->
+                        <!-- link -->
+                        <a href="{{ route('professeur.index') }}"
+                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                            <i class="fad fa-users"></i>
+                            Liste Professeur
+                        </a>
+                        <!-- end link -->
+                    @endif
                     <!-- link -->
-                    <a href="{{ route('course.create') }}"
+                    <a href="{{ route('emploi.index') }}"
                         class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
                         <i class="fad fa-calendar-edit text-xs mr-2"></i>
-                        Ajouter Cours
+                        Emploi
                     </a>
                     <!-- end link -->
 
-                    <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Inscription</p>
+                    @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
+                        <!-- link -->
+                        <a href="{{ route('emploi.create') }}"
+                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                            <i class="fad fa-calendar-edit text-xs mr-2"></i>
+                            Ajouter Emploi
+                        </a>
+                        <!-- end link -->
+                    @endif
 
                     <!-- link -->
-                    <a href="#"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-users"></i>
-                    Liste etudiants
+                    <a href="{{ route('course.index') }}"
+                        class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                        <i class="fad fa-calendar-edit text-xs mr-2"></i>
+                        Cours
                     </a>
                     <!-- end link -->
+                    @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
+                        <!-- link -->
+                        <a href="{{ route('course.create') }}"
+                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                            <i class="fad fa-calendar-edit text-xs mr-2"></i>
+                            Ajouter Cours
+                        </a>
+                        <!-- end link -->
+
+                        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Inscription</p>
+                    @endif
                 @endif
-        @endif
-                <!-- link -->
-                <a href="{{ route('inscription.create') }}"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-check-square text-xs mr-2"></i>
-                    Inscription
-                </a>
-                <!-- end link -->
-                 <!-- link -->
-                 <a href="{{ route('inscription.index') }}"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-check-square text-xs mr-2"></i>
-                    Liste inscriptions
-                </a>
-                <!-- end link -->
-                 <!-- link -->
-                 <a href="{{ route('inscription.list_filter') }}"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-check-square text-xs mr-2"></i>
-                    Liste étudiants
-                </a>
-                <!-- end link -->
-                <!-- link -->
-                <a href="{{ route('inscription.form_filter') }}"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-check-square text-xs mr-2"></i>
-                    Sélection
-                </a>
-                <!-- end link -->
-                <!-- link -->
-                <a href="{{ route('module.create') }}"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-check-square text-xs mr-2"></i>
-                    Ajouter modules
-                </a>
-                <!-- end link -->
-                <!-- link -->
-                <a href="{{ route('module.index') }}"
-                    class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-check-square text-xs mr-2"></i>
-                    List modules
-                </a>
-                <!-- end link -->
+                    @if(auth()->user() && auth()->user()->role === 'etud' )
+                        <!-- link -->
+                        <a href="{{ route('inscription.create') }}"
+                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                            <i class="fad fa-check-square text-xs mr-2"></i>
+                            Inscription
+                        </a>
+                        <!-- end link -->
+                    @endif
+                    @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
+                        @if(auth()->user()->role === 'admin')
+                            <!-- link -->
+                            <a href="{{ route('inscription.index') }}"
+                                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                                <i class="fad fa-check-square text-xs mr-2"></i>
+                                Liste inscriptions
+                            </a>
+                            <!-- end link -->
+                        @endif
 
-            {{-- @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')) --}}
+                        <!-- link -->
+                        <a href="{{ route('inscription.list_filter') }}"
+                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                            <i class="fad fa-check-square text-xs mr-2"></i>
+                            Liste étudiants
+                        </a>
+                        <!-- end link -->
 
+                        @if(auth()->user()->role === 'admin')
+                            <!-- link -->
+                            <a href="{{ route('inscription.form_filter') }}"
+                                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                                <i class="fad fa-check-square text-xs mr-2"></i>
+                                Sélection
+                            </a>
+                            <!-- end link -->
+                            <!-- link -->
+                            <a href="{{ route('module.create') }}"
+                                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                                <i class="fad fa-check-square text-xs mr-2"></i>
+                                Ajouter modules
+                            </a>
+                            <!-- end link -->
+                        @endif
+
+                        <!-- link -->
+                        <a href="{{ route('module.index') }}"
+                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                            <i class="fad fa-check-square text-xs mr-2"></i>
+                            List modules
+                        </a>
+                        <!-- end link -->
+                    @endif
+                {{-- @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')) --}}
+
+
+                </div>
+                <!-- end sidebar content -->
 
             </div>
-            <!-- end sidebar content -->
-
-        </div>
-        <!-- end sidbar -->
+            <!-- end sidbar -->
+        @endif
 
         <!-- strat content -->
         @yield('content')
@@ -224,6 +232,7 @@
 
     </div>
     <!-- end wrapper -->
+
 
     <!-- script -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

@@ -150,14 +150,17 @@ class InscriptionController extends Controller
         $inscription->delete();
         return redirect()->route('inscription.index')->with('success', 'Inscription deleted successfully');
     }
+
     public function list_filter(){
         $idUsers = User::whereIn('role', ['student'])->pluck('id')->toArray();
         $students = Inscription::whereIn('user_id', $idUsers)->get();
         return view('dashboard.inscription.list_filter', compact('students'));
     }
+
     public function form_filter(){
         return view('dashboard.inscription.filter');
     }
+    
     public function filter(Request $data){
         $limit = $data->input('limit');
         $minimumNote = $data->input('minimum_note');
@@ -169,9 +172,9 @@ class InscriptionController extends Controller
             ->pluck('user_id')
             ->toArray();
         User::whereIn('id', $userIds)->update(['role' => 'student']);
-    
+
         // Redirect to the list_filter route
         return redirect()->route('inscription.list_filter');
     }
-    
+
 }

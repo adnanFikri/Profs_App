@@ -18,7 +18,9 @@
                     <th class="px-4 py-2 text-center border-r">Nom module</th>
                     <th class="px-4 py-2 text-center border-r">Professeur</th>
                     <th class="px-4 py-2 text-center border-r">Heurs module</th>
-                    <th class="px-4 py-2 text-center border-r">Action</th>
+                    @if(auth()->user() && auth()->user()->role === 'admin' )
+                        <th class="px-4 py-2 text-center border-r">Action</th>
+                    @endif
                 </tr>
                     </thead>
                     <tbody class="text-gray-600">
@@ -30,19 +32,21 @@
                                 {{ $module->name}}
                             </td>
                             <td class="border border-l text-center px-4 py-2">
-                                    {{ $module->professeur->name}}   
+                                    {{ $module->professeur->name}}
                             </td>
                             <td class="border border-l text-center px-4 py-2">
                                 {{ $module->time}}
                             </td>
-                            <td class="border border-l-0  text-center px-4 py-2">
-                            <form action="{{ route('module.delete', ['id' => $module->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this module?')">
-                            @csrf
-                            @method('DELETE')   
-                                        <button type="submit" class="mr-2 text-center"><i
-                                        class="fad fa-times-circle" style="color: rgb(190, 29, 29);"
-                                        aria-hidden="true"></i></button>
-                            </form>
+                            @if(auth()->user() && auth()->user()->role === 'admin' )
+                                <td class="border border-l-0  text-center px-4 py-2">
+                                <form action="{{ route('module.delete', ['id' => $module->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this module?')">
+                                @csrf
+                                @method('DELETE')
+                                            <button type="submit" class="mr-2 text-center"><i
+                                            class="fad fa-times-circle" style="color: rgb(190, 29, 29);"
+                                            aria-hidden="true"></i></button>
+                                </form>
+                            @endif
                             </td>
                         </tr>
                         @endforeach

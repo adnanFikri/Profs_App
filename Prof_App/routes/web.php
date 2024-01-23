@@ -52,20 +52,20 @@ Route::middleware(['checkRole:admin'])->group(function () {
     Route::put('/professeur/{id}', [App\Http\Controllers\ProfesseurController::class, 'update'])->name('professeur.update');
 });
 
+// Emploi
+Route::get('/emploi', [App\Http\Controllers\EmploiController::class, 'index'])->name('emploi.index');
+Route::post('/emploi/store', [App\Http\Controllers\EmploiController::class, 'store'])->name('emploi.store');
+Route::get('/emploi/create', [App\Http\Controllers\EmploiController::class, 'create'])->name('emploi.create');
+Route::delete('/emploi/{id}', [App\Http\Controllers\EmploiController::class, 'destroy'])->name('emploi.delete');
 //Admin
-Route::middleware(['checkRole:admin,prof'])->group(function () {
-    // Emploi
-    Route::get('/emploi', [App\Http\Controllers\EmploiController::class, 'index'])->name('emploi.index');
-    Route::post('/emploi/store', [App\Http\Controllers\EmploiController::class, 'store'])->name('emploi.store');
-    Route::get('/emploi/create', [App\Http\Controllers\EmploiController::class, 'create'])->name('emploi.create');
-    Route::delete('/emploi/{id}', [App\Http\Controllers\EmploiController::class, 'destroy'])->name('emploi.delete');
+// Route::middleware(['checkRole:admin,prof'])->group(function () {
     // Course :
     Route::get('/course/create', [App\Http\Controllers\CourseController::class, 'create'])->name('course.create');
     Route::post('/course/store', [App\Http\Controllers\CourseController::class, 'store'])->name('course.store');
     Route::get('/course/store', [App\Http\Controllers\CourseController::class, 'store'])->name('course.store');
 
-});
-Route::middleware(['checkRole:admin,prof,student'])->group(function () {
+// });
+// Route::middleware(['checkRole:admin,prof,student'])->group(function () {
     Route::get('/course', [App\Http\Controllers\CourseController::class, 'index'])->name('course.index');
     Route::get('/courses/{module}', [App\Http\Controllers\CourseController::class, 'show'])->name('courses.show');
-});
+// });

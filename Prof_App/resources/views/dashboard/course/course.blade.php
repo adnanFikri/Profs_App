@@ -46,7 +46,7 @@
         @endforeach
     </div>
 @else
-    <p>No courses available for this module.</p>
+    <p>Aucun cours disponible pour ce module.</p>
 @endif
 
 

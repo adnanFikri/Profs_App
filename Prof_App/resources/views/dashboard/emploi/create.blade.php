@@ -65,6 +65,7 @@
             />
         </div>
 {{-- || =-=-=-=-=- Professeur =-=-=-=-=-=- || --}}
+    @if(auth()->user() && auth()->user()->role === 'admin')
         <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
                 fill="currentColor">
@@ -72,14 +73,16 @@
                     clip-rule="evenodd" />
             </svg>
             {{-- <label for="underline_select" class="sr-only">Professeur</label> --}}
-            <select id="underline_select" name="professeur_id" class="block pl-1  px-0 w-full te text-gray-900 bg-transparent border-0 border-gray-200 appearance-none dark:text-dark-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
-                <option hidden class="text-gray-500">Professeur</option>
-                @foreach ($professeurs as $professeur)
-                    <option value="{{ $professeur->id }}">{{ $professeur->name }}</option>
-                @endforeach
-            </select>
+
+                <select id="underline_select" name="professeur_id" class="block pl-1  px-0 w-full te text-gray-900 bg-transparent border-0 border-gray-200 appearance-none dark:text-dark-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
+                    <option hidden class="text-gray-500">Professeur</option>
+                    @foreach ($professeurs as $professeur)
+                        <option value="{{ $professeur->id }}">{{ $professeur->name }}</option>
+                    @endforeach
+                </select>
 
         </div>
+    @endif
 {{-- || =-=-=-=-=- Module =-=-=-=-=-=- || --}}
         <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
