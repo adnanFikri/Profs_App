@@ -134,6 +134,7 @@
         </div>
 
         <button type="submit" class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Envoyer</button>
+        <a href="{{ route('professeur.index') }}" class="block text-center w-full bg-blue-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Retour</a>
     </form>
 
     </div>

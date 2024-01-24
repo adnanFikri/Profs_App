@@ -29,13 +29,16 @@
 @section('content')
 <div class="bg-gray-100 flex-1 p-6  md:mt-16">
 
-    <h1 class="text-lg mb-6 flex justify-start hover:text-blue-70 prntarrow" title="back to modules">
+    <h1 class="text-lg mb-6 flex justify-between hover:text-blue-70 prntarrow" title="back to modules">
         <a href="{{ route('course.index') }}">
             <span class="hover:text-blue-700 ">
                 <span class="material-symbols-outlined arrowbl">arrow_back_ios</span>
                 <span class="material-symbols-outlined arrowb">arrow_back_ios</span>
             </span>
         </a>
+        {{-- <span class="material-symbols-outlined">
+            close
+            </span> --}}
         </h1>
 
     <h1 class="h5 m-2 mb-5">Cours de module <b>{{ $module->name }}</b> </h1>
