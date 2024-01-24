@@ -89,7 +89,7 @@
         @if(auth()->user()->role != 'etud' )
             <!-- start sidebar -->
                 <div id="sideBar"
-                class="relative flex flex-col flex-wrap bg-white border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster">
+                class="relative flex flex-col flex-wrap bg-white border-r border-gray-300 p-6 flex-none w-56 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster">
 
 
                 <!-- sidebar content -->
@@ -115,6 +115,13 @@
                         Accueil
                     </a>
                     <!-- end link -->
+
+
+{{-- ================================ --}}
+{{-- =================================================================================== --}}
+{{-- ================================ GROUP INSCRIPTION ================================ --}}
+{{-- =================================================================================== --}}
+
                     <p class="uppercase text-xs text-gray-600 mb-3 mt-4 tracking-wider">Professeur</p>
 
                     @if(auth()->user()->role === 'admin')
@@ -156,105 +163,24 @@
                         </ul>
                     </div>
 
-                    {{-- @if(auth()->user()->role === 'admin')
-
-                    <nav role="navigation">
-                        <ul>
-                          <li>
-                            <i class="mb-3 fad fa-shield-check text-xs mr-1"></i>
-                            <a href="#" aria-haspopup="true">Professeur</a>
-                            <ul class="dropdown" aria-label="submenu">
-                              <li><a href="{{ route('professeur.index') }}">Liste Professeurs</a></li>
-                              <li><a href="{{ route('professeur.create') }}">Ajouter Professeur</a></li>
-                            </ul>
-                          </li>
+                    <div class="dropdown">
+                        <button class="dropdown-btn" aria-haspopup="menu">
+                            <span> <i class="fad fa-shield-check text-xs mr-1"></i> Modules</span>
+                            <span class="arrow"></span>
+                        </button>
+                        <ul class="dropdown-content" role="menu">
+                            <li style="--delay: 1;"><a href="{{ route('module.index') }}">List Modules</a></li>
+                            @if(auth()->user()->role === 'admin')
+                                <li style="--delay: 2;"><a href="{{ route('module.create') }}">Ajouter Module</a></li>
+                            @endif
                         </ul>
-                      </nav> --}}
-{{--
-                        <!-- link -->
-                        <a href="{{ route('professeur.create') }}"
-                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                            <i class="fad fa-shield-check text-xs mr-2"></i>
-                            Ajouter Professeur
-                        </a>
-                        <!-- end link -->
-                        <!-- link -->
-                        <a href="{{ route('professeur.index') }}"
-                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                            <i class="fad fa-users"></i>
-                            Liste Professeur
-                        </a> --}}
-                        <!-- end link -->
-                    {{-- @endif --}}
-                    <!-- link -->
-                    {{-- <a href="{{ route('emploi.index') }}"
-                        class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                        <i class="fad fa-calendar-edit text-xs mr-2"></i>
-                        Emploi
-                    </a> --}}
-                    <!-- end link -->
-
-                    {{-- <nav role="navigation">
-                        <ul>
-                          {{-- <li><a href="#">One</a></li> --}}
-                          {{-- <li>
-                            <i class="mb-3 fad fa-shield-check text-xs mr-1"></i>
-                            <a href="#" aria-haspopup="true">Emploi</a>
-                            <ul class="dropdown" aria-label="submenu">
-
-                                <li><a href="{{ route('emploi.index') }}">List Emploi</a></li>
-                                @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
-                                    <li><a href="{{ route('emploi.create') }}">Ajouter Emploi</a></li>
-                                @endif
-                            </ul>
-                          </li>
-                        </ul>
-                      </nav>
+                    </div>
 
 
-                    <nav role="navigation">
-                        <ul> --}}
-                          {{-- <li><a href="#">One</a></li> --}}
-                          {{-- <li>
-                            <i class="mb-3 fad fa-shield-check text-xs mr-1"></i>
-                            <a href="#" aria-haspopup="true">Cours</a>
-                            <ul class="dropdown" aria-label="submenu">
-
-                                <li><a href="{{ route('course.index') }}">List Cours</a></li>
-                                @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
-                                    <li><a href="{{ route('course.create') }}">Ajouter Cour</a></li>
-                                @endif
-                            </ul>
-                          </li>
-                        </ul>
-                      </nav>  --}}
-
-                    {{-- @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
-                        <!-- link -->
-                        <a href="{{ route('emploi.create') }}"
-                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                            <i class="fad fa-calendar-edit text-xs mr-2"></i>
-                            Ajouter Emploi
-                        </a>
-                        <!-- end link -->
-                    @endif --}}
-
-                    <!-- link -->
-                    {{-- <a href="{{ route('course.index') }}"
-                        class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                        <i class="fad fa-calendar-edit text-xs mr-2"></i>
-                        Cours
-                    </a> --}}
-                    <!-- end link -->
-                    @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
-                        <!-- link -->
-                        {{-- <a href="{{ route('course.create') }}"
-                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                            <i class="fad fa-calendar-edit text-xs mr-2"></i>
-                            Ajouter Cours
-                        </a> --}}
-                        <!-- end link -->
-
+{{-- ================================ --}}
+{{-- =================================================================================== --}}
+{{-- ================================ GROUP INSCRIPTION ================================ --}}
+{{-- =================================================================================== --}}
                         <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Inscription</p>
                         {{-- <p class="linkbtn">Inscription</p> --}}
                     @endif
@@ -297,22 +223,7 @@
                                 Sélection
                             </a>
                             <!-- end link -->
-                            <!-- link -->
-                            <a href="{{ route('module.create') }}"
-                                class="linkbtn">
-                                <i class="fad fa-check-square text-xs mr-2"></i>
-                                Ajouter modules
-                            </a>
-                            <!-- end link -->
                         @endif
-
-                        <!-- link -->
-                        <a href="{{ route('module.index') }}"
-                            class="linkbtn">
-                            <i class="fad fa-check-square text-xs mr-2"></i>
-                            List modules
-                        </a>
-                        <!-- end link -->
                     @endif
                 {{-- @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')) --}}
 
@@ -322,7 +233,7 @@
 
             </div>
             <!-- end sidbar -->
-        @endif
+        {{-- @endif --}}
 
         <!-- strat content -->
         @yield('content')

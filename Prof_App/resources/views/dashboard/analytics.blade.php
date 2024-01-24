@@ -10,6 +10,8 @@
     }
     .tbdy{
         /* font-family: 'Times New Roman', Times, serif; */
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
         font-weight: bold;
         font-size: 15px;
     }
@@ -131,7 +133,7 @@
 <div class="bg-gray-100 flex-1 p-1 mt-8  md:mt-16">
     <div class="flex items-center justify-between bg-white border-r titre px-3 ">
         <h1 class="h5 sm:mt-10 text-center bg-white p-2  ">Emploi du Temps</h1>
-        <button id="downloadButton" class="bg-blue-300 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+        <button id="downloadButton" class=" hover:bg-blue-400 hover:text-white text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
             <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
             <span>Download</span>
         </button>
@@ -183,7 +185,7 @@
                     @foreach($emplois as $emploi)
                         @if($emploi->jour === "Lundi" && $emploi->time == $time)
                             <span class="acitvecolor">Prof.{{$emploi->professeur->name}}</span></br>
-                            <span>Module:{{$emploi->module->name}}</span></br>
+                            <span>Module : {{$emploi->module->name}}</span></br>
                             <span>salle {{$emploi->salle}}</span>
                             @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->id === $emploi->professeur->user->id)  )
                                 <form action="{{ route('emploi.delete', ['id' => $emploi->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?')">
@@ -207,7 +209,7 @@
                     @foreach($emplois as $emploi)
                         @if($emploi->jour === "Mardi" && $emploi->time == $time)
                             <span class="acitvecolor">Prof.{{  $emploi->professeur->name }}</span></br>
-                            <span>Module:{{$emploi->module->name}}</span></br>
+                            <span>Module : {{$emploi->module->name}}</span></br>
                             <span>salle {{$emploi->salle}}</span>
                             @if(auth()->user()->role === 'admin' || auth()->user()->id === $emploi->professeur->user->id  )
                                 <form action="{{ route('emploi.delete', ['id' => $emploi->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?')">
@@ -231,7 +233,7 @@
                     @foreach($emplois as $emploi)
                         @if($emploi->jour === "Mercredi" && $emploi->time == $time)
                             <span class="acitvecolor">Prof.{{$emploi->professeur->name}}</span></br>
-                            <span>Module:{{$emploi->module->name}}</span></br>
+                            <span>Module : {{$emploi->module->name}}</span></br>
                             <span>salle {{$emploi->salle}}</span>
                             @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->id === $emploi->professeur->user->id)  )
                                 <form action="{{ route('emploi.delete', ['id' => $emploi->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?')">
@@ -255,7 +257,7 @@
                     @foreach($emplois as $emploi)
                         @if($emploi->jour === "Jeudi" && $emploi->time == $time)
                             <span class="acitvecolor">Prof.{{$emploi->professeur->user->id ." - ".$emploi->professeur->name}}</span></br>
-                            <span>Module:{{$emploi->module->name}}</span></br>
+                            <span>Module : {{$emploi->module->name}}</span></br>
                             <span>salle {{$emploi->salle}}</span>
                             @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->id === $emploi->professeur->user->id)  )
                                 <form action="{{ route('emploi.delete', ['id' => $emploi->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?')">
@@ -279,7 +281,7 @@
                     @foreach($emplois as $emploi)
                         @if($emploi->jour === "Vendredi" && $emploi->time == $time)
                             <span class="acitvecolor">Prof.{{$emploi->professeur->name}}</span></br>
-                            <span>Module:{{$emploi->module->name}}</span></br>
+                            <span>Module : {{$emploi->module->name}}</span></br>
                             <span>salle {{$emploi->salle}}</span>
                             @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->id === $emploi->professeur->user->id)  )
                                 <form action="{{ route('emploi.delete', ['id' => $emploi->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?')">
@@ -339,6 +341,7 @@
         // parentElement.style.color = '#282626';
         parentElement.style.boxShadow = '0px .5px 2px #9b9b9b';
         parentElement.style.backgroundColor = '#38bdf8'
+        parentElement.style.backgroundColor = '#60a5fa'
         parentElement.style.color = '#f9fafb';
     });
 
