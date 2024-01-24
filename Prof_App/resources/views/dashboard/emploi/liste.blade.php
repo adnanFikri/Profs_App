@@ -25,14 +25,14 @@
                 <h1 class="h5 sm:mt-10 text-center bg-white p-2  ">Emploi du Temps</h1>
                 <p>Dernière modification: {{ $lastChange ?? 'No entries yet' }}</p>
                 <div class="flex">
-                    <button id="downloadButton" class=" mx-2 hover:bg-blue-400 hover:text-gray-100 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                    <button id="downloadButton" class=" mx-2 hover:bg-blue-400 hover:text-gray-100 duration-500 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
 
                         <span class="material-symbols-outlined mr-1">
                             shadow_add
                             </span>
                         <a href="{{ route('emploi.create') }}">Ajoute</a>
                     </button>
-                    <button id="downloadButton" class=" hover:bg-blue-400 text-gray-800 hover:text-white font-bold py-2 px-4 rounded inline-flex items-center">
+                    <button id="downloadButton" class=" hover:bg-blue-400 text-gray-800 hover:text-white duration-500 font-bold py-2 px-4 rounded inline-flex items-center">
                         <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
                         <span>Telecharger</span>
                     </button>
