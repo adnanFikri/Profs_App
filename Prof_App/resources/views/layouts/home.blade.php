@@ -122,7 +122,7 @@
 {{-- ================================ GROUP INSCRIPTION ================================ --}}
 {{-- =================================================================================== --}}
 
-                    <p class="uppercase text-xs text-gray-600 mb-3 mt-4 tracking-wider">Professeur</p>
+                    <p class="uppercase text-xs text-gray-600 mb-5 mt-4 tracking-wider">Professeur</p>
 
                     @if(auth()->user()->role === 'admin')
                         <div class="dropdown ">

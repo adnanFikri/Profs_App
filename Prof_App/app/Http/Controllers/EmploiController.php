@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\Emploi;
 use App\Models\Module;
 use App\Models\Professeur;
+use Illuminate\Http\Request;
+
 class EmploiController extends Controller
 {
     /**
@@ -14,7 +16,11 @@ class EmploiController extends Controller
     public function index()
     {
         $emplois = Emploi::all();
-        return view('dashboard.emploi.liste',compact('emplois'));
+        $lastChange = Emploi::latest('created_at')->value('created_at');
+        $lastChange = Carbon::parse($lastChange);
+        // Add one hour
+        $lastChange->addHour();
+        return view('dashboard.emploi.liste',compact('emplois', 'lastChange'));
     }
 
     /**
@@ -35,7 +41,7 @@ class EmploiController extends Controller
         $user = auth()->user();
         $userId = auth()->id();
         $prof = Professeur::where('user_id', $userId)->first();
-        
+
         $EmploiExists = Emploi::where('time', $request->input('time'))
         ->where('jour', $request->input('jour'))
         ->first();

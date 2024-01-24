@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Emploi;
 use App\Models\Module;
@@ -34,10 +35,16 @@ class HomeController extends Controller
         $count_students = User::where('role', 'student')->count();
 
         $emplois = Emploi::all();
+        $lastChange = Emploi::latest('created_at')->value('created_at');
+        $lastChange = Carbon::parse($lastChange);
+        // Add one hour
+        $lastChange->addHour();
+
+
         if (auth()->user()->role == 'etud') {
             return view('dashboard.inscription.add');
         } else {
-            return view('dashboard.analytics', compact('count_prof', 'count_module', 'count_inscri', 'count_students', 'emplois'));
+            return view('dashboard.analytics', compact('count_prof', 'count_module', 'count_inscri', 'count_students', 'emplois', 'lastChange'));
         }
     }
 }

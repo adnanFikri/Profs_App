@@ -133,9 +133,10 @@
 <div class="bg-gray-100 flex-1 p-1 mt-8  md:mt-16">
     <div class="flex items-center justify-between bg-white border-r titre px-3 ">
         <h1 class="h5 sm:mt-10 text-center bg-white p-2  ">Emploi du Temps</h1>
+        <p>Dernière modification: {{ $lastChange ?? 'No entries yet' }}</p>
         <button id="downloadButton" class=" hover:bg-blue-400 hover:text-white text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
             <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-            <span>Download</span>
+            <span>Telecharger</span>
         </button>
     </div>
     <!-- Start Recent Sales -->

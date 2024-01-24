@@ -15,31 +15,32 @@
 
 @section('content')
 <div class="bg-gray-100 flex-1 p-6  md:mt-16">
-
+    @if(session('success'))
+    <div class="alert alert-success mb-5">
+        {{ session('success') }}
+    </div>
+    @endif
             {{-- <h1 class="h5 mb-5 sm:mt-10">Emploi du Temps</h1> --}}
             <div class="flex items-center justify-between bg-white border-r titre px-3 ">
                 <h1 class="h5 sm:mt-10 text-center bg-white p-2  ">Emploi du Temps</h1>
+                <p>Dernière modification: {{ $lastChange ?? 'No entries yet' }}</p>
                 <div class="flex">
-                    <button id="downloadButton" class=" mx-2 hover:bg-blue-300 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                    <button id="downloadButton" class=" mx-2 hover:bg-blue-400 hover:text-gray-100 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
 
                         <span class="material-symbols-outlined mr-1">
                             shadow_add
                             </span>
                         <a href="{{ route('emploi.create') }}">Ajoute</a>
                     </button>
-                    <button id="downloadButton" class=" hover:bg-blue-300 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                    <button id="downloadButton" class=" hover:bg-blue-400 text-gray-800 hover:text-white font-bold py-2 px-4 rounded inline-flex items-center">
                         <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-                        <span>Download</span>
+                        <span>Telecharger</span>
                     </button>
                 </div>
             </div>
             <!-- Start Recent Sales -->
         <div class="card col-span-2 xl:col-span-1">
-        @if(session('success'))
-            <div class="alert alert-success mb-5">
-                {{ session('success') }}
-            </div>
-        @endif
+
             <table class="table-auto w-full text-left tbl">
               <thead>
                 <tr>
@@ -228,12 +229,15 @@
             spanElements.forEach(function(spanElement) {
                 var parentElement = spanElement.parentNode;
                 // parentElement.style.backgroundColor = '#bae6fd'
-                parentElement.style.backgroundColor = '#38bdf8'
+                parentElement.style.backgroundColor = '#60a5fa'
                 // parentElement.style.backgroundColor = 'rgb(63 149 221)';
                 parentElement.style.color = '#f9fafb';
                 // parentElement.style.color = 'white';
-                parentElement.style.boxShadow = '1px 1px 5px #c9c2c2';
-            });
+                // parentElement.style.boxShadow = '1px 1px 5px #c9c2c2';
+
+                // parentElement.className = 'bg-gray-200 border border-l-0  pt-3 text-black text-center';
+                parentElement.style.boxShadow = '0px .5px 2px #9b9b9b';
+                    });
 
             $(document).ready(function () {
             // Add click event to the download button
