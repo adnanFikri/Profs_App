@@ -119,7 +119,7 @@
 
 {{-- ================================ --}}
 {{-- =================================================================================== --}}
-{{-- ================================ GROUP INSCRIPTION ================================ --}}
+{{-- ================================ GROUP Professeur ================================ --}}
 {{-- =================================================================================== --}}
 
                     <p class="uppercase text-xs text-gray-600 mb-5 mt-4 tracking-wider">Professeur</p>
@@ -156,9 +156,9 @@
                             <span class="arrow"></span>
                         </button>
                         <ul class="dropdown-content" role="menu">
-                            <li style="--delay: 1;"><a href="#">List Cours</a></li>
+                            <li style="--delay: 1;"><a href="{{ route('course.index') }}">List Cours</a></li>
                             @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
-                                <li style="--delay: 2;"><a href="#">Ajouter Cour</a></li>
+                                <li style="--delay: 2;"><a href="{{ route('course.create') }}">Ajouter Cour</a></li>
                             @endif
                         </ul>
                     </div>

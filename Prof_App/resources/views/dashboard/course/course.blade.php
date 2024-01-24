@@ -13,16 +13,32 @@
 .crd:hover a{
     transform: scale(126%)
 }
+
+.arrowb{
+    margin-left: -17px;
+}
+.arrowl{
+    margin-left: -15px;
+}
+.prntarrow{
+    margin-top: -14px;
+    margin-left: -10px;
+}
 </style>
 
 @section('content')
 <div class="bg-gray-100 flex-1 p-6  md:mt-16">
-            <!-- General Report -->
-    {{-- <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
 
-    </div> --}}
-    <h1 class="h3 m-2 mb-5">Cours de {{ $module->titre }} module</h1>
+    <h1 class="text-lg mb-6 flex justify-start hover:text-blue-70 prntarrow" title="back to modules">
+        <a href="{{ route('course.index') }}">
+            <span class="hover:text-blue-700 ">
+                <span class="material-symbols-outlined arrowbl">arrow_back_ios</span>
+                <span class="material-symbols-outlined arrowb">arrow_back_ios</span>
+            </span>
+        </a>
+        </h1>
 
+    <h1 class="h5 m-2 mb-5">Cours de module <b>{{ $module->name }}</b> </h1>
 
 
     @if($courses->count() > 0)
