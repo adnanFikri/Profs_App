@@ -11,6 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <title>Ecole Normal Superieur</title>
 </head>
 
@@ -43,13 +45,13 @@
             <div class="flex flex-row-reverse items-center">
                 <!-- user -->
                 <div class="dropdown relative md:static">
-                    <button class="menu-btn focus:outline-none focus:shadow-outline flex flex-wrap items-center">
+                    <button class="menu-btn focus:outline-none focus:shadow-outline gap-2 flex flex-wrap justify-center items-center">
                         <div class="w-8 h-8 overflow-hidden rounded-full">
                             <img class="w-full h-full object-cover" src="{{ asset('img/user.jpg') }}">
                         </div>
-                        <div class="ml-2 capitalize flex ">
+                        <div class=" capitalize flex ">
                             <h1 class="text-sm text-gray-800 font-semibold m-0 p-0 leading-none">{{ Auth::user()->name }}</h1>
-                            <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i>
+                            <i class="fad fa-chevron-down ml-1 mt- text-xs leading-none"></i>
                         </div>
                     </button>
 
@@ -106,15 +108,69 @@
                     <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">homes</p>
 
                     <!-- link -->
-                    <a href="{{ route('home') }}"
-                        class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                        <i class="fad fa-chart-pie text-xs mr-2"></i>
+                    <a href="{{ route('home') }}" style="font-size: 16px; "
+                        class="linkbtn">
+                        {{-- class="linkbtn  mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500"> --}}
+                        <i class="fad fa-chart-pie text-xs mr-1"></i>
                         Accueil
                     </a>
                     <!-- end link -->
-                    <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Professeur</p>
+                    <p class="uppercase text-xs text-gray-600 mb-3 mt-4 tracking-wider">Professeur</p>
 
                     @if(auth()->user()->role === 'admin')
+                        <div class="dropdown ">
+                            <button class="dropdown-btn" aria-haspopup="menu">
+                                <span> <i class="fad fa-shield-check text-xs mr-1"></i> Professeur</span>
+                                <span class="arrow"></span>
+                            </button>
+                            <ul class="dropdown-content" role="menu">
+                            <li style="--delay: 1;"><a href="{{ route('professeur.index') }}">List Professeur</a></li>
+                            <li style="--delay: 2;"><a href="{{ route('professeur.create') }}">Ajoute Professeur</a></li>
+                            </ul>
+                        </div>
+                    @endif
+
+                    <div class="dropdown">
+                        <button class="dropdown-btn" aria-haspopup="menu">
+                          <span> <i class="fad fa-shield-check text-xs mr-1"></i> Emploi</span>
+                          <span class="arrow"></span>
+                        </button>
+                        <ul class="dropdown-content" role="menu">
+                            <li style="--delay: 1;"><a href="{{ route('emploi.index') }}">List Emploi</a></li>
+                            @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
+                                <li style="--delay: 2;"><a href="{{ route('emploi.create') }}">Ajouter Emploi</a></li>
+                            @endif
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropdown-btn" aria-haspopup="menu">
+                            <span> <i class="fad fa-shield-check text-xs mr-1"></i> Cours</span>
+                            <span class="arrow"></span>
+                        </button>
+                        <ul class="dropdown-content" role="menu">
+                            <li style="--delay: 1;"><a href="#">List Cours</a></li>
+                            @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
+                                <li style="--delay: 2;"><a href="#">Ajouter Cour</a></li>
+                            @endif
+                        </ul>
+                    </div>
+
+                    {{-- @if(auth()->user()->role === 'admin')
+
+                    <nav role="navigation">
+                        <ul>
+                          <li>
+                            <i class="mb-3 fad fa-shield-check text-xs mr-1"></i>
+                            <a href="#" aria-haspopup="true">Professeur</a>
+                            <ul class="dropdown" aria-label="submenu">
+                              <li><a href="{{ route('professeur.index') }}">Liste Professeurs</a></li>
+                              <li><a href="{{ route('professeur.create') }}">Ajouter Professeur</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </nav> --}}
+{{--
                         <!-- link -->
                         <a href="{{ route('professeur.create') }}"
                             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
@@ -127,18 +183,53 @@
                             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
                             <i class="fad fa-users"></i>
                             Liste Professeur
-                        </a>
+                        </a> --}}
                         <!-- end link -->
-                    @endif
+                    {{-- @endif --}}
                     <!-- link -->
-                    <a href="{{ route('emploi.index') }}"
+                    {{-- <a href="{{ route('emploi.index') }}"
                         class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
                         <i class="fad fa-calendar-edit text-xs mr-2"></i>
                         Emploi
-                    </a>
+                    </a> --}}
                     <!-- end link -->
 
-                    @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
+                    {{-- <nav role="navigation">
+                        <ul>
+                          {{-- <li><a href="#">One</a></li> --}}
+                          {{-- <li>
+                            <i class="mb-3 fad fa-shield-check text-xs mr-1"></i>
+                            <a href="#" aria-haspopup="true">Emploi</a>
+                            <ul class="dropdown" aria-label="submenu">
+
+                                <li><a href="{{ route('emploi.index') }}">List Emploi</a></li>
+                                @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
+                                    <li><a href="{{ route('emploi.create') }}">Ajouter Emploi</a></li>
+                                @endif
+                            </ul>
+                          </li>
+                        </ul>
+                      </nav>
+
+
+                    <nav role="navigation">
+                        <ul> --}}
+                          {{-- <li><a href="#">One</a></li> --}}
+                          {{-- <li>
+                            <i class="mb-3 fad fa-shield-check text-xs mr-1"></i>
+                            <a href="#" aria-haspopup="true">Cours</a>
+                            <ul class="dropdown" aria-label="submenu">
+
+                                <li><a href="{{ route('course.index') }}">List Cours</a></li>
+                                @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
+                                    <li><a href="{{ route('course.create') }}">Ajouter Cour</a></li>
+                                @endif
+                            </ul>
+                          </li>
+                        </ul>
+                      </nav>  --}}
+
+                    {{-- @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
                         <!-- link -->
                         <a href="{{ route('emploi.create') }}"
                             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
@@ -146,31 +237,33 @@
                             Ajouter Emploi
                         </a>
                         <!-- end link -->
-                    @endif
+                    @endif --}}
 
                     <!-- link -->
-                    <a href="{{ route('course.index') }}"
+                    {{-- <a href="{{ route('course.index') }}"
                         class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
                         <i class="fad fa-calendar-edit text-xs mr-2"></i>
                         Cours
-                    </a>
+                    </a> --}}
                     <!-- end link -->
                     @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
                         <!-- link -->
-                        <a href="{{ route('course.create') }}"
+                        {{-- <a href="{{ route('course.create') }}"
                             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
                             <i class="fad fa-calendar-edit text-xs mr-2"></i>
                             Ajouter Cours
-                        </a>
+                        </a> --}}
                         <!-- end link -->
 
                         <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Inscription</p>
+                        {{-- <p class="linkbtn">Inscription</p> --}}
                     @endif
                 @endif
                     @if(auth()->user() && auth()->user()->role === 'etud' )
                         <!-- link -->
                         <a href="{{ route('inscription.create') }}"
-                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                            class="linkbtn">
+                            {{-- class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500"> --}}
                             <i class="fad fa-check-square text-xs mr-2"></i>
                             Inscription
                         </a>
@@ -180,7 +273,8 @@
                         @if(auth()->user()->role === 'admin')
                             <!-- link -->
                             <a href="{{ route('inscription.index') }}"
-                                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                                class="linkbtn">
+                                {{-- class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500"> --}}
                                 <i class="fad fa-check-square text-xs mr-2"></i>
                                 Liste inscriptions
                             </a>
@@ -189,7 +283,7 @@
 
                         <!-- link -->
                         <a href="{{ route('inscription.list_filter') }}"
-                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                            class="linkbtn">
                             <i class="fad fa-check-square text-xs mr-2"></i>
                             Liste étudiants
                         </a>
@@ -198,14 +292,14 @@
                         @if(auth()->user()->role === 'admin')
                             <!-- link -->
                             <a href="{{ route('inscription.form_filter') }}"
-                                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                                class="linkbtn">
                                 <i class="fad fa-check-square text-xs mr-2"></i>
                                 Sélection
                             </a>
                             <!-- end link -->
                             <!-- link -->
                             <a href="{{ route('module.create') }}"
-                                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                                class="linkbtn">
                                 <i class="fad fa-check-square text-xs mr-2"></i>
                                 Ajouter modules
                             </a>
@@ -214,7 +308,7 @@
 
                         <!-- link -->
                         <a href="{{ route('module.index') }}"
-                            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                            class="linkbtn">
                             <i class="fad fa-check-square text-xs mr-2"></i>
                             List modules
                         </a>
@@ -236,6 +330,51 @@
 
     </div>
     <!-- end wrapper -->
+
+
+    <script>
+
+
+var count = 1
+setTimeout(demo, 500)
+setTimeout(demo, 700)
+setTimeout(demo, 900)
+setTimeout(reset, 2000)
+
+setTimeout(demo, 2500)
+setTimeout(demo, 2750)
+setTimeout(demo, 3050)
+
+
+var mousein = false
+function demo() {
+   if(mousein) return
+   document.getElementById('demo' + count++)
+      .classList.toggle('hover')
+
+}
+
+function demo2() {
+   if(mousein) return
+   document.getElementById('demo2')
+      .classList.toggle('hover')
+}
+
+function reset() {
+   count = 1
+   var hovers = document.querySelectorAll('.hover')
+   for(var i = 0; i < hovers.length; i++ ) {
+      hovers[i].classList.remove('hover')
+   }
+}
+
+document.addEventListener('mouseover', function() {
+   mousein = true
+   reset()
+})
+
+    </script>
+
 
 
     <!-- script -->

@@ -1,6 +1,6 @@
 @extends('layouts.home')
 <style>
-    .titre{
+    .titre{ ah
         border-radius: 5px;
         border: rgb(204, 203, 203) 1px solid;
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -131,7 +131,7 @@
 <div class="bg-gray-100 flex-1 p-1 mt-8  md:mt-16">
     <div class="flex items-center justify-between bg-white border-r titre px-3 ">
         <h1 class="h5 sm:mt-10 text-center bg-white p-2  ">Emploi du Temps</h1>
-        <button id="downloadButton" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+        <button id="downloadButton" class="bg-blue-300 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
             <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
             <span>Download</span>
         </button>
@@ -335,33 +335,29 @@
 
         var parentElement = spanElement.parentNode;
 
-        // parentElement.style.backgroundColor = '#b6c3ff';
-        // parentElement.style.backgroundColor = '#9b9b9b';
-        // parentElement.style.backgroundColor = '#dbdbdb';
-        // parentElement.style.backgroundColor = '#4299e1';
-        parentElement.className = 'bg-gray-100 border border-l-0  pt-3 text-black text-center';
-        parentElement.style.color = 'black';
-        // parentElement.style.border = '2px solid brown';
+        parentElement.className = 'bg-gray-200 border border-l-0  pt-3 text-black text-center';
+        // parentElement.style.color = '#282626';
         parentElement.style.boxShadow = '0px .5px 2px #9b9b9b';
-        // parentElement.style.boxShadow = '1px 1px 10px   black';
+        parentElement.style.backgroundColor = '#38bdf8'
+        parentElement.style.color = '#f9fafb';
     });
 
     $(document).ready(function () {
     // Add click event to the download button
-    $('#downloadButton').on('click', function () {
-        // Get the table element
-        var table = document.getElementById('emploiTable');
+        $('#downloadButton').on('click', function () {
+            // Get the table element
+            var table = document.getElementById('emploiTable');
 
-        // Convert the table to PDF
-        html2pdf(table, {
-            margin: 10,
-            filename: 'Emploi_ENS_TMW.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2 },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            // Convert the table to PDF
+            html2pdf(table, {
+                margin: 10,
+                filename: 'Emploi_ENS_TMW.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            });
         });
     });
-});
 
 
 

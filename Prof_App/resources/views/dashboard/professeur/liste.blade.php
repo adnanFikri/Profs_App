@@ -11,7 +11,7 @@
     }
     .imgp{
         width: 50px;
-        height: 50px;
+        height: 60px;
         border-radius: 50%;
         transition: .3s;
     }
