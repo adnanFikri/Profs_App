@@ -83,7 +83,7 @@
 
 
 
-{{-- @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof' || auth()->user()->role === 'student')  ) --}}
+@if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof' || auth()->user()->role === 'student')  )
     <!-- strat wrapper -->
     <div class="h-screen flex flex-row flex-wrap">
         @if(auth()->user()->role != 'etud' )
@@ -185,16 +185,16 @@
                         {{-- <p class="linkbtn">Inscription</p> --}}
                     @endif
                 @endif
-                    @if(auth()->user() && auth()->user()->role === 'etud' )
+                    {{-- @if(auth()->user() && auth()->user()->role === 'etud' ) --}}
                         <!-- link -->
-                        <a href="{{ route('inscription.create') }}"
-                            class="linkbtn">
-                            {{-- class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500"> --}}
+                        {{-- <a href="{{ route('inscription.create') }}" --}}
+                            {{-- class="linkbtn"> --}}
+                            {{-- class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
                             <i class="fad fa-check-square text-xs mr-2"></i>
                             Inscription
-                        </a>
+                        </a> --}}
                         <!-- end link -->
-                    @endif
+                    {{-- @endif --}}
                     @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'prof')  )
                         @if(auth()->user()->role === 'admin')
                             <!-- link -->
@@ -233,7 +233,7 @@
 
             </div>
             <!-- end sidbar -->
-        {{-- @endif --}}
+        @endif
 
         <!-- strat content -->
         @yield('content')

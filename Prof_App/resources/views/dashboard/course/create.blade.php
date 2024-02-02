@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="bg-gray-100 flex-1 p-6  md:mt-16">
-    <h1 class="h3 mb-5 sm:mt-10">Ajouter Professeur</h1>
+    <h1 class="h3 mb-5 sm:mt-10">Ajouter Cour</h1>
 
     <div class="card  mb-10">
     <div class="card-body flex flex-col">
@@ -87,7 +87,7 @@
 
 
         <button type="submit"
-            class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Register</button>
+            class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Ajouter</button>
     </form>
 
     </div>
@@ -96,4 +96,4 @@
 
 
     </div>
-@endsection
+@endsection 

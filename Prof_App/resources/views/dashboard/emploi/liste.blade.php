@@ -25,14 +25,19 @@
                 <h1 class="h5 sm:mt-10 text-center bg-white p-2  ">Emploi du Temps</h1>
                 <p>Dernière modification: {{ $lastChange ?? 'No entries yet' }}</p>
                 <div class="flex">
-                    <button id="downloadButton" class=" mx-2 hover:bg-blue-400 hover:text-gray-100 duration-500 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                    <button  class=" mx-2 hover:bg-blue-400 hover:text-gray-100 duration-500 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
 
                         <span class="material-symbols-outlined mr-1">
                             shadow_add
                             </span>
                         <a href="{{ route('emploi.create') }}">Ajoute</a>
                     </button>
-                    <button id="downloadButton" class=" hover:bg-blue-400 text-gray-800 hover:text-white duration-500 font-bold py-2 px-4 rounded inline-flex items-center">
+                    {{-- <button id="downloadButton" class=" hover:bg-blue-400 text-gray-800 hover:text-white duration-500 font-bold py-2 px-4 rounded inline-flex items-center">
+                        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+                        <span>Telecharger</span>
+                    </button> --}}
+
+                    <button id="downloadButton" class=" hover:bg-blue-400 hover:text-white duration-500 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
                         <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
                         <span>Telecharger</span>
                     </button>
@@ -41,7 +46,7 @@
             <!-- Start Recent Sales -->
         <div class="card col-span-2 xl:col-span-1">
 
-            <table class="table-auto w-full text-left tbl">
+            <table class="table-auto w-full text-left tbl" id="emploiTable">
               <thead>
                 <tr>
                     <th class="px-4 py-2 border-r">Jour</th>
@@ -239,22 +244,22 @@
                 parentElement.style.boxShadow = '0px .5px 2px #9b9b9b';
                     });
 
-            $(document).ready(function () {
-            // Add click event to the download button
-                $('#downloadButton').on('click', function () {
-                    // Get the table element
-                    var table = document.getElementById('emploiTable');
+                $(document).ready(function () {
+                // Add click event to the download button
+                    $('#downloadButton').on('click', function () {
+                        // Get the table element
+                        var table = document.getElementById('emploiTable');
 
-                    // Convert the table to PDF
-                    html2pdf(table, {
-                        margin: 10,
-                        filename: 'Emploi_ENS_TMW.pdf',
-                        image: { type: 'jpeg', quality: 0.98 },
-                        html2canvas: { scale: 2 },
-                        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                        // Convert the table to PDF
+                        html2pdf(table, {
+                            margin: 10,
+                            filename: 'Emploi_ENS_TMW.pdf',
+                            image: { type: 'jpeg', quality: 0.98 },
+                            html2canvas: { scale: 2 },
+                            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                        });
                     });
                 });
-            });
         </script>
 
 

@@ -110,7 +110,7 @@
                 value="{{ old('telephone') }}" required autocomplete="telephone" autofocus
             />
         </div>
-     
+
 
 
 {{-- || =-=-=-=-=- Sector =-=-=-=-=-=- || --}}
@@ -196,7 +196,7 @@
             <input class="pl-2 outline-none  border-none" type="text" name="note_bac" id="note_bac" placeholder="La note du baccalauréat"
                 value="{{ old('note_bac') }}" required autocomplete="note_bac" autofocus
             />
-        </div> 
+        </div>
 {{-- || =-=-=-=-=- Diplome baccalauréat  =-=-=-=-=-=-|| --}}
         <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4 mt-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
@@ -207,7 +207,7 @@
 
             <label class="block ml-2 text-medium font-medium text-gray-500 dark:text-white" for="diplome_bac">Diplome baccalauréat</label>
             <input placeholder="Diplome baccalauréat" required  name="diplome_bac" class="block w-full ml-2 text-sm text-gray-900  border-none rounded-l cursor-pointer bg- dark:text-gray-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600     dark:placeholder-gray-400" id="diplome_bac" type="file">
-        </div>  
+        </div>
 {{-- || =-=-=-=-=- Relevé baccalauréat  =-=-=-=-=-=-|| --}}
         <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4 mt-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
@@ -218,7 +218,7 @@
 
             <label class="block ml-2 text-medium font-medium text-gray-500 dark:text-white" for="releve_bac">Relevé baccalauréat</label>
             <input placeholder="Relevé baccalauréat" required  name="releve_bac" class="block w-full ml-2 text-sm text-gray-900  border-none rounded-l cursor-pointer bg- dark:text-gray-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600     dark:placeholder-gray-400" id="releve_bac" type="file">
-        </div> 
+        </div>
 {{-- || =-=-=-=-=- University Name  Bac+2 =-=-=-=-=-=- || --}}
         <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
@@ -268,7 +268,7 @@
             <input class="pl-2 outline-none  border-none" type="text" name="note_general" id="note_general" placeholder="La note du diplome bac+2"
                 value="{{ old('note_general') }}" required autocomplete="note_general" autofocus
             />
-        </div> 
+        </div>
 {{-- || =-=-=-=-=- Diplome Bac+2  =-=-=-=-=-=-|| --}}
         <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4 mt-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
@@ -279,7 +279,7 @@
 
             <label class="block ml-2 text-medium font-medium text-gray-500 dark:text-white" for="diplome_bac_2">Diplome Bac+2</label>
             <input placeholder="Diplome Bac+2" required  name="diplome_bac_2" class="block w-full ml-2 text-sm text-gray-900  border-none rounded-l cursor-pointer bg- dark:text-gray-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600     dark:placeholder-gray-400" id="diplome_bac_2" type="file">
-        </div>  
+        </div>
 {{-- || =-=-=-=-=- Relevé Bac+2  =-=-=-=-=-=-|| --}}
         <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4 mt-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
@@ -290,7 +290,7 @@
 
             <label class="block ml-2 text-medium font-medium text-gray-500 dark:text-white" for="releve_bac_2">Relevé Bac+2</label>
             <input placeholder="Relevé Bac+2" required  name="releve_bac_2" class="block w-full ml-2 text-sm text-gray-900  border-none rounded-l cursor-pointer bg- dark:text-gray-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600     dark:placeholder-gray-400" id="releve_bac_2" type="file">
-        </div> 
+        </div>
 {{-- || =-=-=-=-=- Inscription  =-=-=-=-=-=-|| --}}
         <button type="submit"
             class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Inscription</button>
